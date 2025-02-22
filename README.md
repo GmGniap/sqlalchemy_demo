@@ -9,3 +9,8 @@ To follow this demo , you need to do these steps first.
 - Setup virtual environment as your own by using `python -m venv environment`. Don't change the virtual environment name.
 - Activate your environment.
 - Install the required libraries by using `pip install -r requirements.txt`.
+
+# Resources
+- SQLite with SQLAlchemy - [link](https://blog.sqlitecloud.io/sqlite-python-sqlalchemy)
+- DataCamp course for SQLAlchemy - [link](https://app.datacamp.com/learn/courses/introduction-to-relational-databases-in-python)
+- CRUD with SQLAlchemy ORM - [link](https://overiq.com/sqlalchemy-101/crud-using-sqlalchemy-orm/)
