@@ -7,11 +7,6 @@ raw_data = requests.get(owid_raw_url).json()
 
 all_countries = pd.DataFrame()
 
-def parse_dictionary(val_dict):
-    ## Get col_val , row_val
-    ## convert to Datafrmae
-    pass
-
 for country_short_code in raw_data.keys():
     single_country_df = pd.json_normalize(raw_data[country_short_code])
     single_country_df['iso_country_code'] = country_short_code
@@ -23,5 +18,5 @@ print(all_countries.columns)
 print("--x--")
 print(all_countries.head())
 
-all_countries.to_csv("all_countries_covid.csv")
+# all_countries.to_csv("all_countries_covid.csv")
     

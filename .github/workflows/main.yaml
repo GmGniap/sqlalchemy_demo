@@ -1,0 +1,23 @@
+name: MMDT Simple ETL pipeline
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 21 11 3 *" ## Trigger on March 11 - 9PM (timezone?)
+  workflow_dispatch: ## manual trigger
+jobs:
+  simple-etl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo content
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run data pipeline
+        run: python week7_demo/ans_covid_data.py
