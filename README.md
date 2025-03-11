@@ -1,8 +1,8 @@
 # Simple Data Pipleine with SQLAlchemy
 
-In this demo, I will show you how to create a simple data pipeline that moves data from a CSV file into a relational database like SQLite or PostgreSQL.
+In this demo, I will show you how to create a simple data pipeline that moves data from CSV file into a relational database like SQLite or PostgreSQL.
 
-For this task, we will use the SQLAlchemy library. This library makes it easy to create database tables using Python's object-oriented programming (OOP) features. It also helps us interact with the database in a straightforward way.
+For this task, we will use the `SQLAlchemy` ORM library. This library makes it easy to create database tables using Python's object-oriented programming (OOP) features. It also helps us interact with the database in a straightforward way.
 
 To follow this demo , you need to do these steps first.
 - Clone this repo.

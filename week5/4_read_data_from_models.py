@@ -5,6 +5,7 @@ from models import Classroom, Student
 engine = create_engine("sqlite:///test.db", echo=True)
 
 with Session(engine) as session:
+
     query = select(Student)
     for student in session.scalars(query):
         print(student)

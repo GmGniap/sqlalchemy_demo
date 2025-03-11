@@ -22,7 +22,8 @@ class Student(Base):
     ## Need to show with/without __repr__
     def __repr__(self):
         return f"Student_id:{self.student_id}\nName:{self.name} from {self.academic_year} Year"
-
+    
+    
 class Classroom(Base):
     __tablename__ = "classroom"
 
