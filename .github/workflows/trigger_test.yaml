@@ -1,0 +1,15 @@
+name: Test Trigger Condition
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  test-trigger:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check event type
+        run: echo "Event - ${{ github.event_name }}"
