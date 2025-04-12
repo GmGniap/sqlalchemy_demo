@@ -22,3 +22,6 @@ jobs:
         run: echo ${{ secrets.WEATHER_KEY }}
       - name: Run ETL pipeline
         run: python week9_demo/etl_demo.py
+        env:
+          WEATHER_KEY: ${{ secrets.WEATHER_KEY }}
+          sqlite: ${{ secrets.SQLITE }}
