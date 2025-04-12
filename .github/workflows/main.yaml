@@ -6,6 +6,10 @@ on:
   schedule:
     - cron: "0 21 12 4 *" ## Trigger on April 12 - 9PM (timezone?)
   workflow_dispatch: ## manual trigger
+
+permissions:
+  contents: write
+
 jobs:
   simple-etl:
     runs-on: ubuntu-latest
