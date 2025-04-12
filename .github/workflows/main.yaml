@@ -19,8 +19,10 @@ jobs:
           cache: "pip"
       - name: Install dependencies
         run: pip install -r requirements.txt
+      - name: Print secrets
+        run: echo ${{ secrets.WEATHER_KEY }}
       - name: Test env vars for python
-        run: python -c "import os; print(os.getenv("WEATHER_KEY"))"
+        run: python -c "import os; print(os.environ)"
         env:
           WEATHER_KEY: ${{ secrets.WEATHER_KEY }}
       - name: Run data pipeline
