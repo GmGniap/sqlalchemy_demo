@@ -5,14 +5,19 @@ import numpy as np
 import os
 import logging
 from sqlalchemy import create_engine
+import platform
 from dotenv import load_dotenv
-load_dotenv()
 
+if platform.system() == "Darwin":
+    load_dotenv()
+else:
+    print(f"Current Platform : {platform.system()}")
+    
 # Configure the logging module
 logging.basicConfig(
     level=logging.DEBUG,  # Set the minimum logging level
     format='%(asctime)s - %(levelname)s - %(message)s',  # Define the log message format
-    filename="./w9/mmdt_etl.log"
+    filename="./week9_demo/mmdt_etl.log"
 )
 
 def extract_json_from_url(url:str):
@@ -45,7 +50,8 @@ def get_covid_data() -> pd.DataFrame:
 
 def get_cities_data() -> pd.DataFrame:
     required_data = []
-    cities_url = "https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/refs/heads/master/json/countries%2Bcities.json"
+    # cities_url = "https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/refs/heads/master/json/countries%2Bcities.json"
+    cities_url = "https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/9dd08cb8c333928e04a1fb4105fe206a9a82a16a/json/countries%2Bstates%2Bcities.json"
     cities_json = extract_json_from_url(cities_url)
     # print(type(cities_json)) ## Assume it'll be list
     for country in cities_json:
@@ -56,7 +62,6 @@ def get_cities_data() -> pd.DataFrame:
             'country_capital': country.get('capital', np.nan),
             'country_subregion': country.get('subregion', np.nan),
             'country_region': country.get('region', np.nan),
-            ## ideas - get all cities of countries then make more requests for Weather
         }
         logging.info(f"Received data for {data_dict['country_name']} - {data_dict['country_capital']}")
         required_data.append(data_dict)
@@ -111,8 +116,11 @@ def transform_data():
     
 
 def load_data(df:pd.DataFrame):
-    engine = create_engine('sqlite:///w9_demo.db')
-    df.to_sql("covid_city_demo", engine, if_exists="replace")
+    db_path = os.getenv("sqlite")
+    db_url = "sqlite:///" + os.path.abspath(db_path)
+    print(f"Db url - {db_url}")
+    engine = create_engine(db_url)
+    df.to_sql("covid_city_demo", engine, if_exists="replace", index=False)
     print("Successfully loaded into sqlite db!")
 
 if __name__ == "__main__":
