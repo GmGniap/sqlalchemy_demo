@@ -4,7 +4,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: "0 21 11 3 *" ## Trigger on March 11 - 9PM (timezone?)
+    - cron: "0 21 12 4 *" ## Trigger on April 12 - 9PM (timezone?)
   workflow_dispatch: ## manual trigger
 jobs:
   simple-etl:
@@ -20,4 +20,4 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Run data pipeline
-        run: python week7_demo/ans_covid_data.py
+        run: python week9_demo/etl_demo.py
