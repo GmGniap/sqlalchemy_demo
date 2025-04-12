@@ -1,0 +1,13 @@
+name: Demo MMDT
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  demo-mmdt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello
+        run: echo "Hello World!"

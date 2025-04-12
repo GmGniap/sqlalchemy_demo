@@ -1,10 +1,10 @@
 name: MMDT Simple ETL pipeline
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
   schedule:
-    - cron: "0 21 12 4 *" ## Trigger on April 12 - 9PM (timezone?)
+    - cron: "0 21 12 4 *" ## Trigger on April 12 - 9PM (Default - UTC Timezone)
   workflow_dispatch: ## manual trigger
 
 permissions:
