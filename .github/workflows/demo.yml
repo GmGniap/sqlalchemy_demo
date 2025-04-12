@@ -20,3 +20,5 @@ jobs:
         run: pip install -r requirements.txt
       - name: Print Weather API secret
         run: echo ${{ secrets.WEATHER_KEY }}
+      - name: Run ETL pipeline
+        run: python week9_demo/etl_demo.py
