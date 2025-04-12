@@ -15,4 +15,7 @@ environment/
 
 # SQLite db
 *.db
+# Except specific sqlite db
+!w10_demo.db
+
 *.log
