@@ -21,11 +21,8 @@ jobs:
         run: pip install -r requirements.txt
       - name: Print secrets
         run: echo ${{ secrets.WEATHER_KEY }}
-      - name: Test env vars for python
-        run: python -c "import os; print(os.environ)"
-        env:
-          WEATHER_KEY: ${{ secrets.WEATHER_KEY }}
       - name: Run data pipeline
         run: python week9_demo/etl_demo.py
         env:
           WEATHER_KEY: ${{ secrets.WEATHER_KEY }}
+          sqlite: ${{ secrets.SQLITE }}
